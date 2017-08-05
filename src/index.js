@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { basename } from 'config'
 import App from 'components/App'
+import '_loader.scss'
 
 const renderApp = () => (
   <BrowserRouter basename={basename}>
