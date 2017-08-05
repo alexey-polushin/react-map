@@ -1,9 +1,13 @@
-// https://github.com/diegohaz/arc/wiki/Atomic-Design
 import React from 'react'
+import { Button } from 'reactstrap'
 
 const HomePage = () => {
   return (
-    <div className="test">Hello World</div>
+    <div className="test">Hello World
+      <Button>
+        Test
+      </Button>
+    </div>
   )
 }
 
