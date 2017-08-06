@@ -14,15 +14,20 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="map-page">
-        <div className="container">
-          <div className="map">
-            <GoogleMapReact
-              bootstrapURLKeys={{ key: 'AIzaSyDRmxmhwt5mglUSf-6i2CwVEHp53WP2G50' }}
-              defaultCenter={this.props.center}
-              defaultZoom={this.props.zoom}
-            />
+      <div className="wrapper">
+        <div className="map-page">
+          <div className="container">
+            <div className="map">
+              <GoogleMapReact
+                bootstrapURLKeys={{ key: 'AIzaSyDRmxmhwt5mglUSf-6i2CwVEHp53WP2G50' }}
+                defaultCenter={this.props.center}
+                defaultZoom={this.props.zoom}
+              />
+            </div>
           </div>
+        </div>
+        <div className="footer">
+          React Map
         </div>
       </div>
     )
