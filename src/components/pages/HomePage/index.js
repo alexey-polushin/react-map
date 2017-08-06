@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import GoogleMapReact from 'google-map-react'
+import { PageTemplate, Footer, Block } from 'components'
+import { Container } from 'reactstrap'
+import config from 'config'
 
 class HomePage extends Component {
   static defaultProps = {
@@ -13,27 +16,21 @@ class HomePage extends Component {
   }
 
   render() {
+    const { key } = config.map
     return (
-      <div className="wrapper">
-        <div className="map-page">
-          <div className="container">
-            <div className="map">
-              <GoogleMapReact
-                bootstrapURLKeys={{ key: 'AIzaSyDRmxmhwt5mglUSf-6i2CwVEHp53WP2G50' }}
-                defaultCenter={this.props.center}
-                defaultZoom={this.props.zoom}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="footer">
-          React Map
-        </div>
-      </div>
+      <PageTemplate footer={<Footer />} className="map-page">
+        <Container>
+          <Block className="map">
+            <GoogleMapReact
+              bootstrapURLKeys={key}
+              defaultCenter={this.props.center}
+              defaultZoom={this.props.zoom}
+            />
+          </Block>
+        </Container>
+      </PageTemplate>
     )
   }
-
-
 }
 
 export default HomePage

@@ -6,6 +6,9 @@ const config = {
     isDev: process.env.NODE_ENV !== 'production',
     basename: process.env.PUBLIC_PATH,
     isBrowser: typeof window !== 'undefined',
+    map: {
+      key: 'AIzaSyDRmxmhwt5mglUSf-6i2CwVEHp53WP2G50',
+    },
   },
   test: {},
   development: {},
