@@ -1,32 +1,31 @@
 import React, { Component, PropTypes } from 'react'
-import GoogleMapReact from 'google-map-react'
-import { PageTemplate, Footer, Block } from 'components'
+import { PageTemplate, Footer, Map, Loader } from 'components'
 import { Container } from 'reactstrap'
-import config from 'config'
+import { getData } from 'utils/helpers'
 
 class HomePage extends Component {
-  static defaultProps = {
-    center: { lat: 59.95, lng: 30.33 },
-    zoom: 11,
+  constructor() {
+    super()
+    this.state = {
+      points: null,
+      center: { lat: 59.95, lng: 30.33 },
+      zoom: 11,
+    }
   }
 
-  static propTypes = {
-    center: PropTypes.object,
-    zoom: PropTypes.number,
+  componentWillMount() {
+    getData().then((data) => {
+      this.setState({ points: data })
+    })
   }
 
   render() {
-    const { key } = config.map
+    const { points } = this.state
     return (
       <PageTemplate footer={<Footer />} className="map-page">
+        { !points && <Loader /> }
         <Container>
-          <Block className="map">
-            <GoogleMapReact
-              bootstrapURLKeys={key}
-              defaultCenter={this.props.center}
-              defaultZoom={this.props.zoom}
-            />
-          </Block>
+          <Map {...this.state} />
         </Container>
       </PageTemplate>
     )
