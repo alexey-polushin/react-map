@@ -1,22 +1,29 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { PageTemplate, Footer, Map, Loader } from 'components'
 import { Container } from 'reactstrap'
 import { getData } from 'utils/helpers'
+
 
 class HomePage extends Component {
   constructor() {
     super()
     this.state = {
       points: null,
-      center: { lat: 59.95, lng: 30.33 },
-      zoom: 11,
+      center: [55.755122, 37.621766],
+      zoom: 9,
     }
   }
 
   componentWillMount() {
     getData().then((data) => {
-      this.setState({ points: data })
+      this.setState({ points: this.filterGeoPoints(data) })
     })
+  }
+
+  filterGeoPoints = (points) => {
+    const markers =
+     Object.assign(...points.map(item => ({ [item.id]: item })))
+    return markers
   }
 
   render() {

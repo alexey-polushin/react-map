@@ -2,7 +2,7 @@ const axios = require('axios')
 
 const getRepos = (api) => {
   return api.request({
-    url: 'https://crossorigin.me/https://api.mosgorpass.ru/v3/stop?perPage=500&page=2',
+    url: 'https://api.mosgorpass.ru/v3/stop?perPage=50&page=2',
     method: 'get',
   })
 }

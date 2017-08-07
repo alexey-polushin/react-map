@@ -1,0 +1,23 @@
+.marker {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: -15px *.5;
+  left: -15px *.5;
+	background: #33cc0d;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+  border-radius: 50px;
+  border: 3px double #fff;
+  z-index: 10;
+}
+
+.marker:hover {
+  background: #fe0101;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.active {
+  background: #fe0101;
+}
