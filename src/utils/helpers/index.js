@@ -7,6 +7,14 @@ const getRepos = (api) => {
   })
 }
 
+const send = (api, params) => {
+  return api.request({
+    params,
+    url: 'https://api.mosgorpass.ru/v3/stop?perPage=500&page=2',
+    method: 'get',
+  })
+}
+
 const api = axios.create({
   headers: {
     Accept: 'application/json',
@@ -19,6 +27,12 @@ const helpers = {
     return axios.all([getRepos(api)])
     .then((response) => {
       return response[0].data.data
+    })
+  },
+  sendData: (params) => {
+    return axios.all([send(api, params)])
+    .then(() => {
+      return 'ok'
     })
   },
 }
