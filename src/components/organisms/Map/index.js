@@ -78,7 +78,7 @@ class Map extends Component {
           })
           }
         </GoogleMapReact>
-        { this.state.activeInfo && <InfoForm point={activePointInfo} /> }
+        { this.state.activeInfo && <InfoForm point={activePointInfo} hideInfo={this.hideInfo} /> }
       </Block>
     )
   }

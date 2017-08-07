@@ -7,11 +7,10 @@ import { sendData } from 'utils/helpers'
 class InfoForm extends Component {
   constructor(props) {
     super(props)
-    const { name, routeName, routeNumber, lat, lon } = props.point
+    const { name, routeName, lat, lon } = props.point
     this.state = {
       name,
       routeName,
-      routeNumber,
       lat,
       lon,
       load: false,
@@ -46,14 +45,14 @@ class InfoForm extends Component {
   }
 
   render() {
-    const { name, routeName, routeNumber, lat, lon, load } = this.state
+    const { name, routeName, lat, lon, load } = this.state
     return (
       <Block className="info-form">
         { load && <Block className="load-wrapper">
           <Loader />
         </Block> }
         <h5 className="title">Инфо</h5>
-        <Form onSubmit={this.onSubmit}>
+        <Form className="form" onSubmit={this.onSubmit}>
           <FormGroup>
             <Label>Имя</Label>
             <Input type="text" name="name" id="name" value={name} onChange={this.handleInputChange} />
@@ -61,10 +60,6 @@ class InfoForm extends Component {
           <FormGroup>
             <Label>Путь</Label>
             <Input type="text" name="routeName" id="routeName" value={routeName} onChange={this.handleInputChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label>Номер пути</Label>
-            <Input type="text" name="routeNumber" id="routeName" value={routeNumber} onChange={this.handleInputChange} />
           </FormGroup>
           <FormGroup>
             <Label>Lat</Label>
@@ -76,6 +71,7 @@ class InfoForm extends Component {
           </FormGroup>
           <Button>Сохранить</Button>
         </Form>
+        <Button onClick={this.props.hideInfo}>Закрыть</Button>
       </Block>
     )
   }
@@ -84,6 +80,7 @@ class InfoForm extends Component {
 
 InfoForm.propTypes = {
   point: PropTypes.object,
+  hideInfo: PropTypes.func,
 }
 
 export default InfoForm
